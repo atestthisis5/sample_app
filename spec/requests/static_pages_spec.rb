@@ -7,24 +7,24 @@ describe "Static Pages" do
   describe "Home Page" do
   
     it "should have the heading 'Sample App'" do
-      visit '/static_pages/home'
+      visit root_path
       page.should have_selector('h1', text: 'Sample App')
     end
 
     it "should have the base title" do
-      visit '/static_pages/home'
+      visit root_path
       page.should have_selector('title', 
                         text: "#{base_title}")
     end
 
     it "should not have the custom page title 'Home'" do
-      visit '/static_pages/home'
+      visit root_path
       page.should_not have_selector('title', 
                         text: "|")
     end
 
     it "should be reachable at controller root" do
-      visit '/static_pages/'
+      visit '/'
       page.should have_selector('h1', text: 'Sample App')
     end
   end
@@ -32,12 +32,12 @@ describe "Static Pages" do
   describe "Help Page" do
 
     it "should have the heading 'Help'" do
-      visit '/static_pages/help'
+      visit help_path
       page.should have_selector('h1', text: 'Help')
     end
 
     it "should have the title 'Help'" do
-      visit '/static_pages/help'
+      visit help_path
       page.should have_selector('title', 
                         text: "#{base_title} | Help")
     end
@@ -46,12 +46,12 @@ describe "Static Pages" do
   describe "About Page" do
 
     it "should have the heading 'About Us'" do
-      visit '/static_pages/about'
+      visit about_path
       page.should have_selector('h1', text: 'About Us')
     end
 
     it "should have the title 'About Us'" do
-      visit '/static_pages/about'
+      visit about_path
       page.should have_selector('title', 
                         text: "#{base_title} | About Us")
     end
@@ -60,12 +60,12 @@ describe "Static Pages" do
   describe "Contact Page" do
 
     it "should have the heading 'Contact'" do
-      visit '/static_pages/contact'
+      visit contact_path
       page.should have_selector('h1', text: 'Contact')
     end
 
     it "should have the title 'Contact'" do
-      visit '/static_pages/contact'
+      visit contact_path
       page.should have_selector('title', 
                         text: "#{base_title} | Contact")
     end
