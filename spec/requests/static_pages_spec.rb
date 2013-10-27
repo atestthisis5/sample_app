@@ -16,6 +16,11 @@ describe "Static Pages" do
       page.should have_selector('title', 
                         text: "#{base_title} | Home")
     end
+
+    it "should be reachable at controller root" do
+      visit '/static_pages/home'
+      page.should have_selector('h1', text: 'Sample App')
+    end
   end
 
   describe "Help Page" do
