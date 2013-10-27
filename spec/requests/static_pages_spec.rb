@@ -24,7 +24,7 @@ describe "Static Pages" do
     end
 
     it "should be reachable at controller root" do
-      visit '/static_pages/home'
+      visit '/static_pages/'
       page.should have_selector('h1', text: 'Sample App')
     end
   end
