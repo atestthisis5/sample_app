@@ -13,14 +13,12 @@ describe "User Pages" do
 
   describe "profile page" do
     # Code to make a user variable
-    before do
-      @user = User.create(name: "Example User", email: "user@example.com",
-                     password: "foobar", password_confirmation: "foobar")
-      visit user_path(@user)
-    end
+    let(:user) { FactoryGirl.create(:user) }
 
-    it { should have_selector('h1',    text: @user.name) }
-    it { should have_selector('title', text: @user.name) }
+    before { visit user_path(user) }
+
+    it { should have_selector('h1',    text: user.name) }
+    it { should have_selector('title', text: user.name) }
   end
 
 
