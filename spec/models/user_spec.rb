@@ -16,8 +16,7 @@ require 'spec_helper'
 describe User do
 
   before do
-    @user = User.new(name: "Example User", email: "user@example.com",
-                     password: "foobar", password_confirmation: "foobar")
+    @user = FactoryGirl.build(:user) # return a User instance that's not saved
   end
 
   subject { @user }

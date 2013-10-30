@@ -27,7 +27,7 @@ describe "Authentication" do
     end
 
     describe "with valid information" do
-      let(:user) { FactoryGirl.create(:user) }
+      let(:user) { FactoryGirl.create(:user) } # return a saved User instance
       before { valid_signin user }
 
       it { should have_selector('title', text: user.name) }
