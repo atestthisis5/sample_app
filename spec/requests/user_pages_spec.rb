@@ -12,8 +12,7 @@ describe "User Pages" do
   end
 
   describe "profile page" do
-    # Code to make a user variable
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { FactoryGirl.create(:user) } # Code to make a user variable
 
     before { visit user_path(user) }
 
@@ -49,12 +48,7 @@ describe "User Pages" do
     end
 
     describe "with valid information" do
-      before do
-        fill_in "Name",         with: "Example User"
-        fill_in "Email",        with: "user@example.com"
-        fill_in "Password",     with: "foobar"
-        fill_in "Confirmation", with: "foobar"
-      end
+      before { @new_user = valid_signup_fill_in }
 
       it "should create a user" do
         expect { click_button submit }.to change(User, :count).by(1)
@@ -62,7 +56,7 @@ describe "User Pages" do
 
       describe "after saving the user" do
         before { click_button submit }
-        let(:user) { User.find_by_email('user@example.com') }
+        let(:user) { User.find_by_email(@new_user.email) }
 
         it { should have_selector('title', text: user.name) }
         it { should have_selector('div.alert.alert-success', text: 'Welcome') }
