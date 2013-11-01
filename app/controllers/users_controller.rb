@@ -18,4 +18,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.save
+      puts 'aaaa'
+      flash[:success] = "Settings saved!"
+      redirect_to @user
+    else
+      puts 'vvvv'
+      render 'edit'
+    end
+  end
+
 end
