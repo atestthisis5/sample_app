@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.save
+    if @user.update_attributes params[:user]
       puts 'aaaa'
       flash[:success] = "Settings saved!"
       redirect_to @user
